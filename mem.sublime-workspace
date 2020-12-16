@@ -1,0 +1,540 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"out",
+				"outputs2"
+			],
+			[
+				"ou",
+				"outputs1"
+			],
+			[
+				"su",
+				"super\tclass"
+			],
+			[
+				"pa",
+				"padding"
+			],
+			[
+				"re",
+				"return\tkeyword"
+			],
+			[
+				"sef",
+				"self"
+			],
+			[
+				"rel",
+				"relu1\tstatement"
+			],
+			[
+				"is",
+				"is_batchnorm"
+			],
+			[
+				"va",
+				"validat_arg_memory\tfunction"
+			],
+			[
+				"flo",
+				"floatt=\tparam"
+			],
+			[
+				"fl",
+				"float_types=\tparam"
+			],
+			[
+				"Con",
+				"Conv3d\tclass"
+			],
+			[
+				"tmp",
+				"tmp_shape\tstatement"
+			],
+			[
+				"im",
+				"im_shape\tstatement"
+			],
+			[
+				"p",
+				"print\tfunction"
+			],
+			[
+				"pr",
+				"prt_mem\tfunction"
+			],
+			[
+				"if",
+				"ifmain\tif __name__ == '__main__'"
+			],
+			[
+				"t",
+				"trilinear"
+			],
+			[
+				"m",
+				"mode"
+			],
+			[
+				"mo",
+				"Module"
+			],
+			[
+				"tra",
+				"train_loss"
+			],
+			[
+				"small",
+				"smalllabels"
+			],
+			[
+				"sm",
+				"smallmasks\tstatement"
+			],
+			[
+				"lo",
+				"look_small\tstatement"
+			],
+			[
+				"inpu",
+				"inputs\tstatement"
+			],
+			[
+				"in",
+				"inputs\tstatement"
+			],
+			[
+				"spli",
+				"splits\tstatement"
+			],
+			[
+				"val",
+				"valDataLoader\tstatement"
+			],
+			[
+				"tr",
+				"trainDataLoader\tstatement"
+			],
+			[
+				"ex",
+				"expcf\tstatement"
+			],
+			[
+				"ha",
+				"hasMasks\tstatement"
+			],
+			[
+				"fi",
+				"file\tstatement"
+			],
+			[
+				"la",
+				"labelFile\tstatement"
+			],
+			[
+				"file",
+				"filePath\tstatement"
+			],
+			[
+				"cla",
+				"classes_name\tstatement"
+			],
+			[
+				"sa",
+				"save_dict\tstatement"
+			],
+			[
+				"mea",
+				"meanDices\tstatement"
+			],
+			[
+				"me",
+				"meanDice\tstatement"
+			],
+			[
+				"dice",
+				"dice\tfunction"
+			],
+			[
+				"ma",
+				"masks\tstatement"
+			],
+			[
+				"ge",
+				"getMask\tfunction"
+			],
+			[
+				"at",
+				"atlasUtils\tmodule"
+			],
+			[
+				"rn",
+				"range\tclass"
+			],
+			[
+				"u",
+				"used_split\tstatement"
+			],
+			[
+				"ite",
+				"item_index\tparam"
+			],
+			[
+				"spl",
+				"split\tstatement"
+			],
+			[
+				"ran",
+				"range\tclass"
+			],
+			[
+				"fil",
+				"filePath\tstatement"
+			],
+			[
+				"l",
+				"labelpath"
+			],
+			[
+				"__l",
+				"__len__\tfunction"
+			],
+			[
+				"ch",
+				"chunkMask\tstatement"
+			],
+			[
+				"chu",
+				"chunk\tstatement"
+			],
+			[
+				"chun",
+				"chunkMask\tstatement"
+			],
+			[
+				"M",
+				"MultiAtlasDataset\tclass"
+			],
+			[
+				"ra",
+				"range\tclass"
+			],
+			[
+				"targ",
+				"target_resolution\tparam"
+			],
+			[
+				"tar",
+				"target_resolution\tparam"
+			],
+			[
+				"ne",
+				"network"
+			],
+			[
+				"to",
+				"torch"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "unet_mem.py",
+			"settings":
+			{
+				"buffer_size": 3273,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"Pack",
+				"Package Control: Install Package"
+			],
+			[
+				"con",
+				"Install Package Control"
+			],
+			[
+				"contr",
+				"Install Package Control"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/themyr/these/memory",
+		"/home/themyr/these/memory/models"
+	],
+	"file_history":
+	[
+		"/home/themyr/these/memory/reversible_mem.py",
+		"/home/themyr/these/memory/models/unetUtils.py",
+		"/home/themyr/these/memory/models/unet_3D.py",
+		"/home/themyr/these/memory/explore_max_cur_memory.py",
+		"/home/themyr/these/memory/models/revunet_3D.py",
+		"/home/themyr/these/memory/mem.sublime-project",
+		"/home/themyr/these/segmentation3D/models/revunet_3D.py",
+		"/home/themyr/these/segmentation3D/alltrain/atlasUtils.py",
+		"/home/themyr/these/segmentation3D/multiatlasDataset.py",
+		"/home/themyr/these/segmentation3D/alltrain/BratsTrain.py",
+		"/home/themyr/these/segmentation3D/expconfigs/revunet.py",
+		"/home/themyr/these/segmentation3D/expconfigs/multi_atlas_unet.py",
+		"/home/themyr/these/segmentation3D/expconfigs/multi_atlas_revunet.py",
+		"/home/themyr/these/segmentation3D/alltrain/bratsUtils.py",
+		"/home/themyr/these/segmentation3D/data_process/atlas_train_process.py",
+		"/home/themyr/.config/sublime-text-3/Packages/User/gitall.sublime-build",
+		"/home/themyr/these/segmentation3D/bratsDataset.py",
+		"/home/themyr/these/segmentation3D/data_process/brats_train_process.py",
+		"/home/themyr/these/segmentation3D/alltrain/__init__.py",
+		"/home/themyr/these/segmentation3D/main.py",
+		"/home/themyr/these/segmentation3D/data_process/utils.py",
+		"/home/themyr/these/segmentation3D/.gitignore",
+		"/home/themyr/these/segmentation3D/work.sublime-project",
+		"/home/themyr/stage/segmentation/configs/same_target/revunet_256_256_128.json",
+		"/home/themyr/stage/segmentation/configs/same_target/unet_160_160_96.json",
+		"/home/themyr/stage/segmentation/models/base_model.py",
+		"/home/themyr/stage/segmentation/models/layers/loss.py",
+		"/home/themyr/stage/segmentation/models/feedforward_seg_model.py",
+		"/home/themyr/stage/segmentation/splits_training.py",
+		"/home/themyr/stage/segmentation/models/networks/utils.py",
+		"/home/themyr/stage/segmentation/models/same_dim/unet_3D.py",
+		"/home/themyr/stage/segmentation/models/same_dim/__init__.py",
+		"/home/themyr/stage/segmentation/models/__init__.py",
+		"/home/themyr/stage/segmentation/models/feedforward_classifier.py",
+		"/home/themyr/stage/segmentation/configs/same_target/revunet_160_160_96.json",
+		"/home/themyr/stage/segmentation/dataio/loader/split_tcia_3D_dataset.py",
+		"/home/themyr/stage/segmentation/models/same_dim/utils.py",
+		"/home/themyr/stage/segmentation/models/utils.py",
+		"/home/themyr/stage/segmentation/models/networks/revunet_3DNotWorking.py",
+		"/home/themyr/stage/segmentation/predict.py",
+		"/home/themyr/work.sublime-project",
+		"/home/themyr/.config/sublime-text-3/Packages/Anaconda/Anaconda.sublime-settings",
+		"/home/themyr/.config/sublime-text-3/Packages/User/Anaconda.sublime-settings"
+	],
+	"find":
+	{
+		"height": 24.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"1",
+			"in_size",
+			"argm_m",
+			"start",
+			"interpolation",
+			"start",
+			"prt_mem",
+			"Inrepolate",
+			"Interpolate",
+			"self",
+			"align_corners"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "unet_mem.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3273,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3170,
+								3170
+							]
+						],
+						"settings":
+						{
+							"open_with_edit": true,
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 949.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 40.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 117.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/User/gitall.sublime-build",
+	"project": "mem.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 248.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
