@@ -90,8 +90,12 @@ def main():
 	opti.step()
 	memory_callback['step'] = {'max' : maxmem(), 'cur' : curmem()}
 
-	memory_callback['hookF'] = {'max' : hookF.max_mem, 'cur' : hookF.cur_mem}
-	memory_callback['hookB'] = {'max' : hookB.max_mem, 'cur' : hookB.cur_mem}
+	memory_callback['hookF'] = []
+	memory_callback['hookB'] = []
+
+	for i,j in zip(hookF, hookB):
+		memory_callback['hookF'].append({'max' : i.max_mem, 'cur' : i.cur_mem})
+		memory_callback['hookB'].append({'max' : j.max_mem, 'cur' : j.cur_mem})
 
 	with open('callback_memory.json', 'w') as f:
 		json.dump(memory_callback, f, indent=4)
