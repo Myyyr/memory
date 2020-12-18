@@ -62,9 +62,11 @@ def main():
 
 	fact = 0.1
 
-	x = torch.from_numpy(np.random.rand(1,1,int(round(512*fact)),int(round(512*fact)),int(round(198*fact)))).float().gpu()
+	x = torch.from_numpy(np.random.rand(1,1,int(round(512*fact)),int(round(512*fact)),int(round(198*fact)))).float()
+	x = x.to(device)
 	memory_callback['input'] = {'max' : maxmem(), 'cur' : curmem()}
 	y = torch.from_numpy(np.random.rand(1,outsize,512,512,198)).float().gpu()
+	y = y.to(device)
 	memory_callback['output'] = {'max' : maxmem(), 'cur' : curmem()}
 
 	opti = torch.optim.SGD(mod.parameters(), lr=0.01)
