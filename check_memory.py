@@ -45,6 +45,7 @@ def apply_hook(net):
 def main():
 	gpu = '2'
 	os.environ["CUDA_VISIBLE_DEVICES"] = gpu
+	device = torch.device("cuda")
 	memory_callback = {}
 
 	inchan = 1
@@ -55,7 +56,7 @@ def main():
 
 
 	mod = unet_3D(chans, n_classes=outsize, in_channels=inchan, interpolation = interp)
-	mod.to_device('gpu')
+	mod.to('gpu')
 	hookF, hookB = apply_hook(mod)
 	memory_callback['model'] = {'max' : maxmem(), 'cur' : curmem()}
 
