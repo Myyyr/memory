@@ -109,36 +109,40 @@ def flt(t):
 
 
 def validat_arg_memory(arg, floatt = 'short'):
-	return np.prod(arg.shape)*flt(floatt)
+    return np.prod(arg.shape)*flt(floatt)
 
 def main():
-	inchan = 1
-	chanscale = 16
-	chans = [i//chanscale for i in [64, 128, 256, 512, 1024]]
-	outsize = 12
-	interp = (512,512,198)
-	mod = RevUnet3D(inchan, chans, outsize, interp)
+    inchan = 1
+    chanscale = 16
+    chans = [i//chanscale for i in [64, 128, 256, 512, 1024]]
+    outsize = 14
+    interp = (512,512,198)
+    mod = RevUnet3D(inchan, chans, outsize, interp)
 
-	layers = get_mod_details(mod)
+    layers = get_mod_details(mod)
 
-	x = torch.from_numpy(np.random.rand(1,1,512,512,198)).float()
-	y = torch.from_numpy(np.random.rand(1,12,512,512,198)).float()
-	argmax = torch.from_numpy(np.random.rand(1,1,512,512,198)).float()
-	acts = get_activations_shapes_as_dict(layers, x)
+    fact = 0.1
+
+    x = torch.from_numpy(np.random.rand(1,1,int(round(512*fact)),int(round(512*fact)),int(round(198*fact)))).float()
+    y = torch.from_numpy(np.random.rand(1,outsize,512,512,198)).float()
+    # argmax = torch.from_numpy(np.random.rand(1,1,512,512,198)).float()
+    acts = get_activations_shapes_as_dict(layers, x)
 
 
-	cur_m, max_m = forward_memory_cosumption_with_peak(acts)
+    cur_m, max_m = forward_memory_cosumption_with_peak(acts)
 
-	mod_m = model_memory(mod)
-	lab_m = labels_mem(y)
-	# argm_m = validat_arg_memory(argmax)
+    mod_m = model_memory(mod)
+    lab_m = labels_mem(y)
+    # argm_m = validat_arg_memory(argmax)
 
-	print(convert_byte(cur_m*2 + mod_m + lab_m))
-	print(convert_byte(max_m + mod_m + lab_m))
+    # print(convert_byte(cur_m*2 + mod_m + lab_m))
+    # print(convert_byte(max_m + mod_m + lab_m))
+
+    print(convert_byte(mod_m+ 2*lab_m + cur_m))
 
 
 if __name__ == '__main__':
-	main()
+    main()
 
 
 

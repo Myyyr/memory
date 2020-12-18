@@ -1,6 +1,7 @@
 import numpy as np 
 import torch
-from models.unet_3D import unet_3D
+# from models.unet_3D import unet_3D
+from models.revunet_3D import revunet_3D
 from models.memoryUtils import Hook
 
 
@@ -55,7 +56,8 @@ def main():
 	interp = (512,512,198)
 
 
-	mod = unet_3D(chans, n_classes=outsize, in_channels=inchan, interpolation = interp)
+	# mod = unet_3D(chans, n_classes=outsize, in_channels=inchan, interpolation = interp)
+	mod = RevUnet3D(inchan, chans, outsize, interp)
 	mod.to(device)
 	hookF, hookB = apply_hook(mod)
 	memory_callback['model'] = {'max' : maxmem(), 'cur' : curmem()}
@@ -99,7 +101,10 @@ def main():
 		memory_callback['hookF'].append({'max' : i.max_mem, 'cur' : i.cur_mem})
 		memory_callback['hookB'].append({'max' : j.max_mem, 'cur' : j.cur_mem})
 
-	with open('callback_memory.json', 'w') as f:
+	# with open('callback_memory.json', 'w') as f:
+	# 	json.dump(memory_callback, f, indent=4)
+
+	with open('callback_rev_memory.json', 'w') as f:
 		json.dump(memory_callback, f, indent=4)
 
 
