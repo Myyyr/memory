@@ -3,13 +3,17 @@ import torch
 from models.unet_3D import unet_3D
 from models.memoryUtils import Hook
 
-import torch.cuda.max_memory_allocated as maxmem
-import torch.cuda.memory_allocated as curmem
+
 
 import models.memoryUtils as atlasUtils
 
 import json
 
+def maxmem():
+	return torch.cuda.max_memory_allocated()
+
+def curmem():
+	return torch.cuda.memory_allocated()
 
 
 def convert_bytes(size):
