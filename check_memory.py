@@ -8,6 +8,10 @@ import torch.cuda.memory_allocated as curmem
 
 import models.memoryUtils as atlasUtils
 
+import json
+
+
+
 def convert_bytes(size):
     for x in ['bytes', 'KB', 'MB', 'GB', 'TB']:
         if size < 1024.0:
@@ -77,6 +81,9 @@ def main():
 
 	memory_callback['hookF'] = hookF
 	memory_callback['hookB'] = hookB
+
+	with open('callback_memory.json', 'w') as f:
+		json.dump(memory_callback, f, indent=4)
 
 
 if __name__ == '__main__':
