@@ -28,3 +28,42 @@ def convert_bytes(size):
         size /= 1024.0
 
     return size
+
+
+
+def softDice(pred, target, smoothing=1, nonSquared=False):
+    intersection = (pred * target).sum(dim=(1, 2, 3))
+    if nonSquared:
+        union = (pred).sum() + (target).sum()
+    else:
+        union = (pred * pred).sum(dim=(1, 2, 3)) + (target * target).sum(dim=(1, 2, 3))
+    dice = (2 * intersection + smoothing) / (union + smoothing)
+
+    dice[dice != dice] = dice.new_tensor([1.0])
+
+    return dice.mean()
+
+def dice(pred, target):
+    predBin = (pred > 0.5).float()
+    return softDice(predBin, target, 0, True).item()
+
+def diceLoss(pred, target, nonSquared=False):
+    return 1 - softDice(pred, target, nonSquared=nonSquared)
+
+def atlasDiceLoss(outputs, labels, nonSquared=False):
+    n_classe = 14
+    chunk = list(outputs.chunk(n_classe, dim=1))
+    
+    s = chunk[0].shape
+    
+
+    for i in range(n_classe):
+        chunk[i] = chunk[i].view(s[0], s[2], s[3], s[4])
+        
+
+
+    chunkMask = list(labels.chunk(n_classe, dim=1))
+    s = chunkMask[0].shape
+    
+    for i in range(n_classe):
+        chunkMask[i] = chunkMask[i].view(s[0], s[2], s[3], s[4])
