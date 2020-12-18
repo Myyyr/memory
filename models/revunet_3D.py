@@ -5,6 +5,17 @@ import torch.nn.functional as F
 import revtorch.revtorch as rv
 import random
 
+
+class softmax(nn.Module):
+    def __init__(self, dim):
+        super(softmax, self).__init__()
+        self.dim = dim
+
+    def forward(self, x):
+        return F.softmax(x, dim = self.dim)
+
+
+
 id = random.getrandbits(64)
 def convert_byte(v):
     units = {'Bytes':1,'KB':1e-3, 'MB':1e-6, 'GB':1e-9}
@@ -131,9 +142,13 @@ class RevUnet3D(nn.Module):
 
         self.lastConv = nn.Conv3d(channels[0], out_size, 1, bias=True)
 
+        self.softmax = softmax(1)
+
         self.interpolation = interpolation
         if self.interpolation != None:
             self.interpolation = nn.Upsample(size = interpolation, mode = "trilinear")
+
+
 
     def forward(self, x):
         # tibo_in_shape = x.shape[-3:]
@@ -149,7 +164,7 @@ class RevUnet3D(nn.Module):
         for i in range(self.levels):
             
             x = self.encoders[i](x)
-            prt_mem('encoder.'+str(i))
+            # prt_mem('encoder.'+str(i))
             shapes.append(x.shape)
             # print("level :", i, " x.shape :",x.shape)
             if i < self.levels - 1:
@@ -158,21 +173,20 @@ class RevUnet3D(nn.Module):
         for i in range(self.levels):
             
             x = self.decoders[i](x, shapes[-(i+2)])
-            prt_mem('decoder.'+str(i))
+            # prt_mem('decoder.'+str(i))
             # print("level :", i, " x.shape :",x.shape)
             if i < self.levels - 1:
                 x = x + inputStack.pop()
 
         x = self.lastConv(x)
-        prt_mem('lastConv')
-
-        # if tibo_in_shape != [512,512,256]:
-        if self.interpolation != None:
-            xi = self.interpolation(x)
-            prt_mem('interpolation')
-            return xi, x
-        #x = torch.sigmoid(x)
-        return x, None
+        # prt_mem('lastConv')
+        x = self.softmax(x)
+        # if self.interpolation != None:
+        #     xi = self.interpolation(x)
+        #     # prt_mem('interpolation')
+        #     return xi, x
+        # #x = torch.sigmoid(x)
+        return self.interpolation(x)
 
     @staticmethod
     def apply_argmax_softmax(pred):

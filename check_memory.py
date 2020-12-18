@@ -79,9 +79,11 @@ def main():
 
 	mod.train()
 	out = mod(x)
+	del x
 	memory_callback['forward'] = {'max' : maxmem(), 'cur' : curmem()}
 
 	l = loss(out, y)
+	del y, out
 	memory_callback['loss'] = {'max' : maxmem(), 'cur' : curmem()}
 
 	l.backward()
