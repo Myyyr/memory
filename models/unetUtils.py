@@ -128,7 +128,7 @@ class UnetConv3(nn.Module):
         for m in self.children():
             init_weights(m, init_type='kaiming')
 
-    def forward(self, inputs):
+    def forward(self, inputs, is_batchnorm = False):
         # outputs = self.conv1(inputs)
         # outputs = self.conv2(outputs)
         outputs = self.conv1(inputs)
