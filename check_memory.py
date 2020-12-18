@@ -1,7 +1,7 @@
 import numpy as np 
 import torch
 # from models.unet_3D import unet_3D
-from models.revunet_3D import revunet_3D
+from models.revunet_3D import RevUnet3D
 from models.memoryUtils import Hook
 
 
