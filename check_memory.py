@@ -8,6 +8,9 @@ from models.memoryUtils import Hook
 import models.memoryUtils as atlasUtils
 
 import json
+import os
+
+
 
 def maxmem():
 	return torch.cuda.max_memory_allocated()
