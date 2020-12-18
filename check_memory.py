@@ -33,7 +33,7 @@ def apply_hook(net):
 	hookF = []
 	hookB = []
 	for i,layer in enumerate(list(net.children())):
-	    if not isinstance(layer,nn.ReLU) and not isinstance(layer,nn.LeakyReLU):
+	    if not isinstance(layer,torch.nn.ReLU) and not isinstance(layer,torch.nn.LeakyReLU):
 	        print('Hooked to {}'.format(layer))
 	        hookF.append(Hook(layer))
 	        hookB.append(Hook(layer,backward=True))
