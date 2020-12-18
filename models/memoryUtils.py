@@ -67,3 +67,14 @@ def atlasDiceLoss(outputs, labels, nonSquared=False):
     
     for i in range(n_classe):
         chunkMask[i] = chunkMask[i].view(s[0], s[2], s[3], s[4])
+
+
+    losses = []
+    for i in range(n_classe):
+        losses.append(diceLoss(chunk[i], chunkMask[i], nonSquared=nonSquared))
+
+    # print('###END LOSS###')
+
+    return sum(losses) / n_classe
+
+
