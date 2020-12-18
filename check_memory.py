@@ -56,7 +56,7 @@ def main():
 
 
 	mod = unet_3D(chans, n_classes=outsize, in_channels=inchan, interpolation = interp)
-	mod.to('gpu')
+	mod.to(device)
 	hookF, hookB = apply_hook(mod)
 	memory_callback['model'] = {'max' : maxmem(), 'cur' : curmem()}
 
