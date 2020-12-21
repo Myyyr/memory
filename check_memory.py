@@ -75,7 +75,7 @@ def main():
     hookF, hookB = rev_apply_hook(mod)
     memory_callback['model'] = {'max' : maxmem(), 'cur' : curmem()}
 
-    fact = 1.0
+    fact = 0.5
 
     x = torch.from_numpy(np.random.rand(1,1,int(round(512*fact)),int(round(512*fact)),int(round(198*fact)))).float()
     x = x.to(device)
