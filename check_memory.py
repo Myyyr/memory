@@ -43,6 +43,18 @@ def apply_hook(net):
 	return hookF, hookB
 
 
+def rev_apply_hook(net):
+	hookF = []
+	hookB = []
+    for name, layer in net.named_modules():
+        #print(name, layer, type(layer))
+        if name != "" and (isinstance(layer, torch.nn.modules.upsampling.Upsample) or isinstance(layer, torch.nn.MaxPool3d)):
+    		print('Hooked to {}'.format(name))
+    		hookF.append(Hook(layer))
+    		hookB.append(Hook(layer,backward=True))
+	print('hook len :', len(hookF), len(hookB))
+    return hookF, hookB
+
 
 def main():
 	gpu = '2'
@@ -60,7 +72,7 @@ def main():
 	# mod = unet_3D(chans, n_classes=outsize, in_channels=inchan, interpolation = interp)
 	mod = RevUnet3D(inchan, chans, outsize, interp)
 	mod.to(device)
-	hookF, hookB = apply_hook(mod)
+	hookF, hookB = rev_apply_hook(mod)
 	memory_callback['model'] = {'max' : maxmem(), 'cur' : curmem()}
 
 	fact = 0.1
