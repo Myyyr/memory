@@ -121,11 +121,11 @@ def main():
 
     layers = get_mod_details(mod)
 
-    fact = 0.1
+    fact = 1.0
 
     x = torch.from_numpy(np.random.rand(1,1,int(round(512*fact)),int(round(512*fact)),int(round(198*fact)))).float()
     y = torch.from_numpy(np.random.rand(1,outsize,512,512,198)).float()
-    # argmax = torch.from_numpy(np.random.rand(1,1,512,512,198)).float()
+    argmax = torch.from_numpy(np.random.rand(1,outsize,512,512,198)).float()
     acts = get_activations_shapes_as_dict(layers, x)
 
 
@@ -133,12 +133,13 @@ def main():
 
     mod_m = model_memory(mod)
     lab_m = labels_mem(y)
-    # argm_m = validat_arg_memory(argmax)
+    argm_m = validat_arg_memory(argmax)
 
     # print(convert_byte(cur_m*2 + mod_m + lab_m))
     # print(convert_byte(max_m + mod_m + lab_m))
 
     print(convert_byte(mod_m+ 2*lab_m + cur_m))
+    print(convert_byte(mod_m+ 2*lab_m + cur_m + argm_m))
 
 
 if __name__ == '__main__':

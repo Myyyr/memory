@@ -63,7 +63,7 @@ def main():
     memory_callback = {}
 
     inchan = 1
-    chanscale = 2
+    chanscale = 32
     chans = [i//chanscale for i in [64, 128, 256, 512, 1024]]
     outsize = 14
     interp = (512,512,198)
@@ -75,7 +75,7 @@ def main():
     hookF, hookB = rev_apply_hook(mod)
     memory_callback['model'] = {'max' : maxmem(), 'cur' : curmem()}
 
-    fact = 0.1
+    fact = 1.0
 
     x = torch.from_numpy(np.random.rand(1,1,int(round(512*fact)),int(round(512*fact)),int(round(198*fact)))).float()
     x = x.to(device)
@@ -117,7 +117,7 @@ def main():
     # with open('callback_memory.json', 'w') as f:
     #   json.dump(memory_callback, f, indent=4)
 
-    with open('callback_rev_memory.json', 'w') as f:
+    with open('callback_rev_memory_full.json', 'w') as f:
         json.dump(memory_callback, f, indent=4)
 
 
