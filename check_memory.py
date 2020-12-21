@@ -48,7 +48,7 @@ def rev_apply_hook(net):
     hookB = []
     for name, layer in net.named_modules():
         #print(name, layer, type(layer))
-        if name != "" and (isinstance(layer, torch.nn.modules.upsampling.Upsample) or isinstance(layer, torch.nn.MaxPool3d)):
+        if name != "" and (isinstance(layer, torch.nn.modules.upsampling.Upsample) or isinstance(layer, torch.nn.Conv3d) or isinstance(layer, torch.nn.MaxPool3d)):
             print('Hooked to {}'.format(name))
             hookF.append(Hook(layer))
             hookB.append(Hook(layer,backward=True))
