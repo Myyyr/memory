@@ -38,6 +38,7 @@ def apply_hook(net):
 	        print('Hooked to {}'.format(layer))
 	        hookF.append(Hook(layer))
 	        hookB.append(Hook(layer,backward=True))
+	print('hook len :', len(hookF), len(hookB))
 
 	return hookF, hookB
 
