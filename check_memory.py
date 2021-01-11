@@ -119,7 +119,7 @@ def main():
     # with open('callback_memory.json', 'w') as f:
     #   json.dump(memory_callback, f, indent=4)
 
-    with open('callback_rev_memory_full.json', 'w') as f:
+    with open('callback_unet_memory_full.json', 'w') as f:
         json.dump(memory_callback, f, indent=4)
 
 
