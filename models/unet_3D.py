@@ -133,7 +133,7 @@ class unet_3D(nn.Module):
         # print("||interpolation|| cur memory :", convert_bytes(torch.cuda.memory_allocated()))
         # exit(0)
         # exit(0)
-        return final
+        return Y
 
 
 
