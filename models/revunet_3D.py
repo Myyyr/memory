@@ -144,9 +144,9 @@ class RevUnet3D(nn.Module):
 
         self.softmax = softmax(1)
 
-        self.interpolation = interpolation
-        if self.interpolation != None:
-            self.interpolation = nn.Upsample(size = interpolation, mode = "trilinear")
+        # self.interpolation = interpolation
+        # if self.interpolation != None:
+        #     self.interpolation = nn.Upsample(size = interpolation, mode = "trilinear")
 
 
 
@@ -186,7 +186,8 @@ class RevUnet3D(nn.Module):
         #     # prt_mem('interpolation')
         #     return xi, x
         # #x = torch.sigmoid(x)
-        return self.interpolation(x)
+        # return self.interpolation(x)
+        return x
 
     @staticmethod
     def apply_argmax_softmax(pred):

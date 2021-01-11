@@ -94,19 +94,24 @@ def main():
     # print(convert_byte(1000*1000*1000*5*4))
     # exit(0)
     inchan = 1
-    chanscale = 2
+    chanscale = 1
     chans = [i//chanscale for i in [64, 128, 256, 512, 1024]]
     outsize = 14
-    interp = (512,512,198)
-    mod = unet_3D(chans, n_classes=outsize, in_channels=inchan, interpolation = interp)
+    # interp = (512,512,198)
+    mod = unet_3D(chans, n_classes=outsize, in_channels=inchan, interpolation = None)
 
     layers = get_mod_details(mod)
 
     fact = 0.1
+    s = (80,80,32)
 
-    x = torch.from_numpy(np.random.rand(1,1,int(round(512*fact)),int(round(512*fact)),int(round(198*fact)))).float()
-    y = torch.from_numpy(np.random.rand(1,outsize,512,512,198)).float()
-    argmax = torch.from_numpy(np.random.rand(1,outsize,512,512,198)).float()
+    # x = torch.from_numpy(np.random.rand(1,1,int(round(512*fact)),int(round(512*fact)),int(round(198*fact)))).float()
+    # y = torch.from_numpy(np.random.rand(1,outsize,int(round(512*fact)),int(round(512*fact)),int(round(198*fact)))).float()
+    # argmax = torch.from_numpy(np.random.rand(1,outsize,int(round(512*fact)),int(round(512*fact)),int(round(198*fact)))).float()
+
+    x = torch.from_numpy(np.random.rand(1,1,s[0], s[1], s[2])).float()
+    y = torch.from_numpy(np.random.rand(1,outsize,s[0], s[1], s[2])).float()
+    argmax = torch.from_numpy(np.random.rand(1,outsize,s[0], s[1], s[2])).float()
     acts = get_activations_shapes_as_dict(layers, x)
 
 
@@ -123,6 +128,9 @@ def main():
     # print(convert_byte(mod_m+ labels_mem(x)))
     # print(convert_byte(mod_m+ labels_mem(x) + lab_m))
     # print(convert_byte(mod_m+ labels_mem(x) + lab_m + (cur_m + lab_m)))
+    print(convert_byte(mod_m))
+    print(convert_byte(mod_m+ lab_m))
+    print(convert_byte(mod_m+ 2*lab_m ))
     print(convert_byte(mod_m+ 2*lab_m + cur_m))
     print(convert_byte(mod_m+ 2*lab_m + cur_m + argm_m))
 

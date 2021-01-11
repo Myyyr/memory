@@ -2,6 +2,7 @@ import torch
 from models.revunet_3D import RevUnet3D, Interpolate
 import numpy as np
 
+import models
 
 
 
@@ -9,8 +10,9 @@ def get_mod_details(model):
     ret = {'name' : [], 'layer' : []}
     for name, layer in model.named_modules():
         #print(name, layer, type(layer))
-        if name != "" and (isinstance(layer, torch.nn.modules.upsampling.Upsample) or isinstance(layer, torch.nn.Conv3d) or isinstance(layer, torch.nn.ReLU) or isinstance(layer, torch.nn.GroupNorm) or isinstance(layer, torch.nn.MaxPool3d)):
+        if name != "" and (isinstance(layer, models.revunet_3D.softmax) or isinstance(layer, torch.nn.modules.upsampling.Upsample) or isinstance(layer, torch.nn.Conv3d) or isinstance(layer, torch.nn.ReLU) or isinstance(layer, torch.nn.GroupNorm) or isinstance(layer, torch.nn.MaxPool3d)):
             ret['name'].append(name)
+            # print(name)
             ret['layer'].append(layer)
     return ret
 
@@ -61,12 +63,16 @@ def forward_memory_cosumption_with_peak(shapes, float_types='float'):
     all_types = {'float':4, 'double':8, 'half':2}
     
     enc, dec = -1, -1
+    ind = 0
     for k in list(shapes.keys()):
         s = shapes[k]
+        txt = "" + k
+        
         if 'reversible' not in k:
             cur_m += np.prod(s)*all_types[float_types]
             max_m += np.prod(s)*all_types[float_types]
-        elif 'encoders' in k:
+            txt += " :: saved !"
+        elif ('encoders' in k) or ('decoders' in k):
             tmp_enc = int(k[9])
             if tmp_enc == enc:
                 tmp_max_m += np.prod(s)*all_types[float_types]*2
@@ -77,6 +83,22 @@ def forward_memory_cosumption_with_peak(shapes, float_types='float'):
                 tmp_max_m = cur_m + np.prod(s)*all_types[float_types]
                 if max_m < tmp_max_m:
                     max_m = tmp_max_m
+            txt += " :: notsa !"
+
+            if (ind < len(list(shapes.keys()))-1) and ('encoders' in k):
+                a = list(shapes.keys())[ind][9]
+                b = list(shapes.keys())[ind+1][9]
+                # print(a, b)
+                # a = int(a) 
+                # b = int(b)
+
+                if a < b:
+                    cur_m += np.prod(s)*all_types[float_types]
+                    max_m += np.prod(s)*all_types[float_types]
+
+        ind += 1
+        print(txt)
+        print(convert_byte(max_m))
             
                 
         
@@ -116,16 +138,20 @@ def main():
     chanscale = 16
     chans = [i//chanscale for i in [64, 128, 256, 512, 1024]]
     outsize = 14
-    interp = (512,512,198)
+    interp = None
     mod = RevUnet3D(inchan, chans, outsize, interp)
 
     layers = get_mod_details(mod)
 
-    fact = 1.0
+    fact = 1
+    s = (80, 80, 32)
+    # x = torch.from_numpy(np.random.rand(1,1,int(round(512*fact)),int(round(512*fact)),int(round(200*fact)))).float()
+    # y = torch.from_numpy(np.random.rand(1,outsize,int(round(512*fact)),int(round(512*fact)),int(round(200*fact)))).float()
+    # argmax = torch.from_numpy(np.random.rand(1,outsize,int(round(512*fact)),int(round(512*fact)),int(round(200*fact)))).float()
+    x = torch.from_numpy(np.random.rand(1,1,s[0], s[1], s[2])).float()
+    y = torch.from_numpy(np.random.rand(1,outsize,s[0], s[1], s[2])).float()
+    argmax = torch.from_numpy(np.random.rand(1,outsize,s[0], s[1], s[2])).float()
 
-    x = torch.from_numpy(np.random.rand(1,1,int(round(512*fact)),int(round(512*fact)),int(round(198*fact)))).float()
-    y = torch.from_numpy(np.random.rand(1,outsize,512,512,198)).float()
-    argmax = torch.from_numpy(np.random.rand(1,outsize,512,512,198)).float()
     acts = get_activations_shapes_as_dict(layers, x)
 
 
@@ -137,9 +163,11 @@ def main():
 
     # print(convert_byte(cur_m*2 + mod_m + lab_m))
     # print(convert_byte(max_m + mod_m + lab_m))
-
-    print(convert_byte(mod_m+ 2*lab_m + cur_m))
-    print(convert_byte(mod_m+ 2*lab_m + cur_m + argm_m))
+    print('mod', convert_byte(mod_m))
+    print('lab', convert_byte(mod_m + lab_m))
+    print('for', convert_byte(mod_m + lab_m + cur_m))
+    print('bac', convert_byte(mod_m+ 2*lab_m + cur_m))
+    print('arg', convert_byte(mod_m+ 2*lab_m + cur_m + argm_m))
 
 
 if __name__ == '__main__':

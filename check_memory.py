@@ -66,21 +66,23 @@ def main():
     chanscale = 32
     chans = [i//chanscale for i in [64, 128, 256, 512, 1024]]
     outsize = 14
-    interp = (512,512,198)
+    interp = None
 
 
-    # mod = unet_3D(chans, n_classes=outsize, in_channels=inchan, interpolation = interp)
-    mod = RevUnet3D(inchan, chans, outsize, interp)
+    mod = unet_3D(chans, n_classes=outsize, in_channels=inchan, interpolation = interp)
+    # mod = RevUnet3D(inchan, chans, outsize, interp)
     mod.to(device)
     hookF, hookB = rev_apply_hook(mod)
     memory_callback['model'] = {'max' : maxmem(), 'cur' : curmem()}
 
     fact = 0.5
+    s = (80,80,32)
 
-    x = torch.from_numpy(np.random.rand(1,1,int(round(512*fact)),int(round(512*fact)),int(round(198*fact)))).float()
+    # x = torch.from_numpy(np.random.rand(1,1,int(round(512*fact)),int(round(512*fact)),int(round(198*fact)))).float()
+    x = torch.from_numpy(np.random.rand(1,1,s[0],s[1],s[2])).float()
     x = x.to(device)
     memory_callback['input'] = {'max' : maxmem(), 'cur' : curmem()}
-    y = torch.from_numpy(np.random.rand(1,outsize,512,512,198)).float()
+    y = torch.from_numpy(np.random.rand(1,outsize,s[0],s[1],s[2])).float()
     y = y.to(device)
     memory_callback['output'] = {'max' : maxmem(), 'cur' : curmem()}
 

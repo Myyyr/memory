@@ -57,7 +57,7 @@ class unet_3D(nn.Module):
         self.softmax = softmax(1)
 
         # interpolation
-        self.interpolation = nn.Upsample(size = interpolation, mode = "trilinear")
+        # self.interpolation = nn.Upsample(size = interpolation, mode = "trilinear")
 
 
         # initialise weights
@@ -127,7 +127,7 @@ class unet_3D(nn.Module):
         Y = self.softmax(Y)
         # print("||final|| memory :",convert_bytes(torch.cuda.max_memory_allocated()))
         # print("||final|| cur memory :", convert_bytes(torch.cuda.memory_allocated()))
-        final = self.interpolation(Y)
+        # final = self.interpolation(Y)
         
         # print("||interpolation|| memory :",convert_bytes(torch.cuda.max_memory_allocated()))
         # print("||interpolation|| cur memory :", convert_bytes(torch.cuda.memory_allocated()))
