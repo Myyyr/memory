@@ -56,6 +56,7 @@ def rev_apply_hook(net):
     return hookF, hookB
 
 
+
 def main():
     gpu = '2'
     os.environ["CUDA_VISIBLE_DEVICES"] = gpu
@@ -72,7 +73,8 @@ def main():
     mod = unet_3D(chans, n_classes=outsize, in_channels=inchan, interpolation = interp)
     # mod = RevUnet3D(inchan, chans, outsize, interp)
     mod.to(device)
-    hookF, hookB = rev_apply_hook(mod)
+    # hookF, hookB = rev_apply_hook(mod)
+    hookF, hookB = apply_hook(mod)
     memory_callback['model'] = {'max' : maxmem(), 'cur' : curmem()}
 
     fact = 0.5

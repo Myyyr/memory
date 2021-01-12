@@ -12,7 +12,8 @@ def get_mod_details(model):
     for name, layer in model.named_modules():
         #print(name, layer, type(layer))
         #print(name, layer)
-        if name != "" and (isinstance(layer, models.unet_3D.softmax) or isinstance(layer, torch.nn.modules.upsampling.Upsample) or isinstance(layer, torch.nn.Conv3d) or isinstance(layer, torch.nn.ReLU) or isinstance(layer, torch.nn.GroupNorm) or isinstance(layer, torch.nn.MaxPool3d) or isinstance(layer, models.unetUtils.Pad)):
+        # if name != "" and (isinstance(layer, models.unet_3D.softmax) or isinstance(layer, torch.nn.modules.upsampling.Upsample) or isinstance(layer, torch.nn.Conv3d) or isinstance(layer, torch.nn.ReLU) or isinstance(layer, torch.nn.GroupNorm) or isinstance(layer, torch.nn.MaxPool3d) or isinstance(layer, models.unetUtils.Pad)):
+        if name != "" and (isinstance(layer, models.unet_3D.softmax) or isinstance(layer, torch.nn.modules.upsampling.Upsample) or isinstance(layer, torch.nn.Conv3d)  or isinstance(layer, torch.nn.GroupNorm) or isinstance(layer, torch.nn.MaxPool3d) or isinstance(layer, models.unetUtils.Pad)):
             ret['name'].append(name)
             ret['layer'].append(layer)
     return ret
@@ -115,11 +116,13 @@ def main():
     acts = get_activations_shapes_as_dict(layers, x)
 
 
-    cur_m = forward_memory_cosumption_with_peak(acts)
+    
 
     mod_m = model_memory(mod)
     lab_m = labels_mem(y)
     argm_m = validat_arg_memory(argmax)
+    inp_m = labels_mem(x)
+    cur_m = forward_memory_cosumption_with_peak(acts) - inp_m
 
     # print(convert_byte(cur_m*2 + mod_m + lab_m))
     # print(convert_byte(lab_m))
@@ -128,11 +131,12 @@ def main():
     # print(convert_byte(mod_m+ labels_mem(x)))
     # print(convert_byte(mod_m+ labels_mem(x) + lab_m))
     # print(convert_byte(mod_m+ labels_mem(x) + lab_m + (cur_m + lab_m)))
-    print(convert_byte(mod_m))
-    print(convert_byte(mod_m+ lab_m))
-    print(convert_byte(mod_m+ 2*lab_m ))
-    print(convert_byte(mod_m+ 2*lab_m + cur_m))
-    print(convert_byte(mod_m+ 2*lab_m + cur_m + argm_m))
+    print('model :', convert_byte(mod_m))
+    print('input :', convert_byte(mod_m+inp_m))
+    print('label :', convert_byte(mod_m+inp_m + lab_m))
+    print('forwa :', convert_byte(mod_m+inp_m + lab_m + cur_m))
+    print('backw :', convert_byte(mod_m+inp_m + lab_m + cur_m + lab_m))
+    # print(convert_byte(mod_m+inp_m + lab_m + cur_m + lab_m + argm_m))
 
     # print(convert_byte(cur_m*2 + mod_m + 2*lab_m)) ### + optimzer ~ 500MB
 
