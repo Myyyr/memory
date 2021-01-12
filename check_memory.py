@@ -79,7 +79,7 @@ def main():
 
     fact = 0.5
     # s = (80,80,32)
-    s = (256,256,128)
+    s = (112,112,48)
 
     # x = torch.from_numpy(np.random.rand(1,1,int(round(512*fact)),int(round(512*fact)),int(round(198*fact)))).float()
     x = torch.from_numpy(np.random.rand(1,1,s[0],s[1],s[2])).float()
@@ -122,7 +122,7 @@ def main():
     # with open('callback_memory.json', 'w') as f:
     #   json.dump(memory_callback, f, indent=4)
 
-    with open('callback_unet_memory_256_full.json', 'w') as f:
+    with open('callback_unet_memory_112_full.json', 'w') as f:
         json.dump(memory_callback, f, indent=4)
 
 
