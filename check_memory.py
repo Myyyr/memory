@@ -58,7 +58,7 @@ def rev_apply_hook(net):
 
 
 def main():
-    gpu = '2'
+    gpu = '0'
     os.environ["CUDA_VISIBLE_DEVICES"] = gpu
     device = torch.device("cuda")
     memory_callback = {}
