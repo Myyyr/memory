@@ -18,10 +18,12 @@ class Hook():
         
         self.max_mem.append(torch.cuda.max_memory_allocated())
         self.cur_mem.append(torch.cuda.memory_allocated())
-        self.name.append(module.named_modules())
+        self.name.append(get_module_name(str(module)))
         print('Hook is called on {}, max_mem : {}, cur_mem : {}'.format(module, convert_bytes(self.max_mem[-1]), convert_bytes(self.cur_mem[-1])))
 
 
+def get_module_name(s):
+    return s[:s.find('(')]
 
 def convert_bytes(size):
     for x in ['bytes', 'KB', 'MB', 'GB', 'TB']:
