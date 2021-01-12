@@ -115,8 +115,8 @@ def main():
     memory_callback['hookB'] = []
 
     for i,j in zip(hookF, hookB):
-        memory_callback['hookF'].append({'max' : i.max_mem, 'cur' : i.cur_mem, i.name})
-        memory_callback['hookB'].append({'max' : j.max_mem, 'cur' : j.cur_mem, j.name})
+        memory_callback['hookF'].append({'max' : i.max_mem, 'cur' : i.cur_mem, 'name':i.name})
+        memory_callback['hookB'].append({'max' : j.max_mem, 'cur' : j.cur_mem, 'name':j.name})
     print("LEN : ", len(memory_callback['hookF']), len(memory_callback['hookF']))
     # with open('callback_memory.json', 'w') as f:
     #   json.dump(memory_callback, f, indent=4)
