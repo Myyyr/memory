@@ -35,7 +35,7 @@
             "cur": [
                 497659904
             ],
-            "name": "[<generator object Module.named_modules at 0x7fc3384a1ba0>]"
+            "name": "['UnetConv3']"
         },
         {
             "max": [
@@ -44,7 +44,7 @@
             "cur": [
                 517320704
             ],
-            "name": "[<generator object Module.named_modules at 0x7fc3357ac3b8>]"
+            "name": "['MaxPool3d']"
         },
         {
             "max": [
@@ -53,7 +53,7 @@
             "cur": [
                 543535104
             ],
-            "name": "[<generator object Module.named_modules at 0x7fc3357bd4c0>]"
+            "name": "['UnetConv3']"
         },
         {
             "max": [
@@ -62,7 +62,7 @@
             "cur": [
                 548450304
             ],
-            "name": "[<generator object Module.named_modules at 0x7fc3357c45c8>]"
+            "name": "['MaxPool3d']"
         },
         {
             "max": [
@@ -71,7 +71,7 @@
             "cur": [
                 555003904
             ],
-            "name": "[<generator object Module.named_modules at 0x7fc3357c96d0>]"
+            "name": "['UnetConv3']"
         },
         {
             "max": [
@@ -80,7 +80,7 @@
             "cur": [
                 556232704
             ],
-            "name": "[<generator object Module.named_modules at 0x7fc3357d37d8>]"
+            "name": "['MaxPool3d']"
         },
         {
             "max": [
@@ -89,7 +89,7 @@
             "cur": [
                 557871104
             ],
-            "name": "[<generator object Module.named_modules at 0x7fc3357c90f8>]"
+            "name": "['UnetConv3']"
         },
         {
             "max": [
@@ -98,7 +98,7 @@
             "cur": [
                 558178304
             ],
-            "name": "[<generator object Module.named_modules at 0x7fc3357c4728>]"
+            "name": "['MaxPool3d']"
         },
         {
             "max": [
@@ -107,7 +107,7 @@
             "cur": [
                 558587904
             ],
-            "name": "[<generator object Module.named_modules at 0x7fc3357bd5c8>]"
+            "name": "['UnetConv3']"
         },
         {
             "max": [
@@ -116,7 +116,7 @@
             "cur": [
                 563503104
             ],
-            "name": "[<generator object Module.named_modules at 0x7fc33842ec50>]"
+            "name": "['UnetUp3_CT']"
         },
         {
             "max": [
@@ -125,7 +125,7 @@
             "cur": [
                 579887104
             ],
-            "name": "[<generator object Module.named_modules at 0x7fc338431d58>]"
+            "name": "['UnetUp3_CT']"
         },
         {
             "max": [
@@ -134,7 +134,7 @@
             "cur": [
                 645947392
             ],
-            "name": "[<generator object Module.named_modules at 0x7fc338436e60>]"
+            "name": "['UnetUp3_CT']"
         },
         {
             "max": [
@@ -143,7 +143,7 @@
             "cur": [
                 908091392
             ],
-            "name": "[<generator object Module.named_modules at 0x7fc33843af68>]"
+            "name": "['UnetUp3_CT']"
         },
         {
             "max": [
@@ -152,7 +152,7 @@
             "cur": [
                 919560192
             ],
-            "name": "[<generator object Module.named_modules at 0x7fc3384490a0>]"
+            "name": "['Conv3d']"
         },
         {
             "max": [
@@ -161,7 +161,7 @@
             "cur": [
                 931028992
             ],
-            "name": "[<generator object Module.named_modules at 0x7fc33843aca8>]"
+            "name": "['softmax']"
         }
     ],
     "hookB": [
@@ -172,7 +172,7 @@
             "cur": [
                 969564160
             ],
-            "name": "[<generator object Module.named_modules at 0x7fc33842e4c0>]"
+            "name": "['UnetConv3']"
         },
         {
             "max": [
@@ -181,7 +181,7 @@
             "cur": [
                 1094082560
             ],
-            "name": "[<generator object Module.named_modules at 0x7fc3357bdd00>]"
+            "name": "['MaxPool3d']"
         },
         {
             "max": [
@@ -190,7 +190,7 @@
             "cur": [
                 1091427328
             ],
-            "name": "[<generator object Module.named_modules at 0x7fc3357c4a98>]"
+            "name": "['UnetConv3']"
         },
         {
             "max": [
@@ -199,7 +199,7 @@
             "cur": [
                 1122556928
             ],
-            "name": "[<generator object Module.named_modules at 0x7fc338449150>]"
+            "name": "['MaxPool3d']"
         },
         {
             "max": [
@@ -208,7 +208,7 @@
             "cur": [
                 1111020544
             ],
-            "name": "[<generator object Module.named_modules at 0x7fc338430b48>]"
+            "name": "['UnetConv3']"
         },
         {
             "max": [
@@ -217,7 +217,7 @@
             "cur": [
                 1118802944
             ],
-            "name": "[<generator object Module.named_modules at 0x7fc338452db0>]"
+            "name": "['MaxPool3d']"
         },
         {
             "max": [
@@ -226,7 +226,7 @@
             "cur": [
                 1075807232
             ],
-            "name": "[<generator object Module.named_modules at 0x7fc3383dcf10>]"
+            "name": "['UnetConv3']"
         },
         {
             "max": [
@@ -235,7 +235,7 @@
             "cur": [
                 1078572032
             ],
-            "name": "[<generator object Module.named_modules at 0x7fc3383e3570>]"
+            "name": "['MaxPool3d']"
         },
         {
             "max": [
@@ -244,7 +244,7 @@
             "cur": [
                 910128128
             ],
-            "name": "[<generator object Module.named_modules at 0x7fc3383dc468>]"
+            "name": "['UnetConv3']"
         },
         {
             "max": [
@@ -253,7 +253,7 @@
             "cur": [
                 804045824
             ],
-            "name": "[<generator object Module.named_modules at 0x7fc338452360>]"
+            "name": "['UnetUp3_CT']"
         },
         {
             "max": [
@@ -262,7 +262,7 @@
             "cur": [
                 805452800
             ],
-            "name": "[<generator object Module.named_modules at 0x7fc338430258>]"
+            "name": "['UnetUp3_CT']"
         },
         {
             "max": [
@@ -271,7 +271,7 @@
             "cur": [
                 911751168
             ],
-            "name": "[<generator object Module.named_modules at 0x7fc3384495c8>]"
+            "name": "['UnetUp3_CT']"
         },
         {
             "max": [
@@ -280,7 +280,7 @@
             "cur": [
                 1001485312
             ],
-            "name": "[<generator object Module.named_modules at 0x7fc3357c4d58>]"
+            "name": "['UnetUp3_CT']"
         },
         {
             "max": [
@@ -289,7 +289,7 @@
             "cur": [
                 908092928
             ],
-            "name": "[<generator object Module.named_modules at 0x7fc3357bd7d8>]"
+            "name": "['Conv3d']"
         },
         {
             "max": [
@@ -298,7 +298,7 @@
             "cur": [
                 942498816
             ],
-            "name": "[<generator object Module.named_modules at 0x7fc33842eca8>]"
+            "name": "['softmax']"
         }
     ]
 }
