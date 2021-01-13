@@ -40,10 +40,12 @@ def get_activations_shapes_as_dict(layers, x):
                 padding = 2 * [offset // 2, offset // 2, 0]
                 x, y = l(inputs1, x, padding)
                 x = torch.cat([x,y],1)
+                shapes[n] = y.shape
                 up -= 1    
             else:
                 x = l(x)
                 shapes[n] = x.shape
+
 
 
             # print(n, x.shape)
@@ -89,6 +91,7 @@ def flt(t):
 def validat_arg_memory(arg, floatt = 'short'):
     return np.prod(arg.shape)*flt(floatt)
 
+
 def main():
     # print(convert_byte(1000*1000*1000*3*4))
     # print(convert_byte(1000*1000*1000*4*4))
@@ -104,8 +107,9 @@ def main():
     layers = get_mod_details(mod)
 
     fact = 0.1
-    s = (80,80,32)
-
+    # s = (80,80,32)
+    # s = (112,112,48)
+    s = (256,256,112)
     # x = torch.from_numpy(np.random.rand(1,1,int(round(512*fact)),int(round(512*fact)),int(round(198*fact)))).float()
     # y = torch.from_numpy(np.random.rand(1,outsize,int(round(512*fact)),int(round(512*fact)),int(round(198*fact)))).float()
     # argmax = torch.from_numpy(np.random.rand(1,outsize,int(round(512*fact)),int(round(512*fact)),int(round(198*fact)))).float()
@@ -123,6 +127,7 @@ def main():
     argm_m = validat_arg_memory(argmax)
     inp_m = labels_mem(x)
     cur_m = forward_memory_cosumption_with_peak(acts) - inp_m
+    back_m = chans[0]*np.prod(s)*4*2 - outsize*np.prod(s)*4*3
 
     # print(convert_byte(cur_m*2 + mod_m + lab_m))
     # print(convert_byte(lab_m))
@@ -135,7 +140,8 @@ def main():
     print('input :', convert_byte(mod_m+inp_m))
     print('label :', convert_byte(mod_m+inp_m + lab_m))
     print('forwa :', convert_byte(mod_m+inp_m + lab_m + cur_m))
-    print('backw :', convert_byte(mod_m+inp_m + lab_m + cur_m + lab_m))
+    print('backw :', convert_byte(mod_m+inp_m + lab_m + cur_m + back_m))
+    print('max   :', convert_byte(max(mod_m+inp_m + lab_m + cur_m, mod_m+inp_m + lab_m + cur_m + back_m - 2*chans[0]*np.prod(s)*4)))
     # print(convert_byte(mod_m+inp_m + lab_m + cur_m + lab_m + argm_m))
 
     # print(convert_byte(cur_m*2 + mod_m + 2*lab_m)) ### + optimzer ~ 500MB
