@@ -64,7 +64,7 @@ def main():
     memory_callback = {}
 
     inchan = 1
-    chanscale = 8
+    chanscale = 4
     chans = [i//chanscale for i in [64, 128, 256, 512, 1024]]
     outsize = 14
     interp = None
