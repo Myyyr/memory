@@ -135,7 +135,7 @@ def validat_arg_memory(arg, floatt = 'short'):
 
 def main():
     inchan = 1
-    chanscale = 1
+    chanscale = 16
     chans = [i//chanscale for i in [64, 128, 256, 512, 1024]]
     outsize = 14
     interp = None
@@ -144,15 +144,13 @@ def main():
     layers = get_mod_details(mod)
 
     fact = 1
-    # s = (80, 80, 32)
-    # s = (112,112,48)
-    s = (256,256,112)
+    s = (80, 80, 32)
     # x = torch.from_numpy(np.random.rand(1,1,int(round(512*fact)),int(round(512*fact)),int(round(200*fact)))).float()
     # y = torch.from_numpy(np.random.rand(1,outsize,int(round(512*fact)),int(round(512*fact)),int(round(200*fact)))).float()
     # argmax = torch.from_numpy(np.random.rand(1,outsize,int(round(512*fact)),int(round(512*fact)),int(round(200*fact)))).float()
     x = torch.from_numpy(np.random.rand(1,1,s[0], s[1], s[2])).float()
     y = torch.from_numpy(np.random.rand(1,outsize,s[0], s[1], s[2])).float()
-    # argmax = torch.from_numpy(np.random.rand(1,outsize,s[0], s[1], s[2])).float()
+    argmax = torch.from_numpy(np.random.rand(1,outsize,s[0], s[1], s[2])).float()
 
     acts = get_activations_shapes_as_dict(layers, x)
 
@@ -161,24 +159,15 @@ def main():
 
     mod_m = model_memory(mod)
     lab_m = labels_mem(y)
-    inp_m = labels_mem(x)
-    bac_m = chans[0]*np.prod(x.shape)*4
-    # argm_m = validat_arg_memory(argmax)
+    argm_m = validat_arg_memory(argmax)
 
     # print(convert_byte(cur_m*2 + mod_m + lab_m))
     # print(convert_byte(max_m + mod_m + lab_m))
-    print('model :', convert_byte(mod_m))
-    print('input :', convert_byte(mod_m+inp_m))
-    print('label :', convert_byte(mod_m+inp_m + lab_m))
-    print('forwa :', convert_byte(mod_m+inp_m + lab_m + max_m))
-    print('backw :', convert_byte(mod_m+inp_m + lab_m + max_m + bac_m))
-
-    # print('backw :', convert_byte(mod_m+inp_m + lab_m + cur_m + back_m))
-
-    # print('lab', convert_byte(mod_m + + lab_m))
-    # print('for', convert_byte(mod_m + lab_m + cur_m))
-    # print('bac', convert_byte(mod_m+ 2*lab_m + cur_m))
-    # print('arg', convert_byte(mod_m+ 2*lab_m + cur_m + argm_m))
+    print('mod', convert_byte(mod_m))
+    print('lab', convert_byte(mod_m + lab_m))
+    print('for', convert_byte(mod_m + lab_m + cur_m))
+    print('bac', convert_byte(mod_m+ 2*lab_m + cur_m))
+    print('arg', convert_byte(mod_m+ 2*lab_m + cur_m + argm_m))
 
 
 if __name__ == '__main__':
