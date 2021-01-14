@@ -124,7 +124,7 @@ def main():
     # with open('callback_memory.json', 'w') as f:
     #   json.dump(memory_callback, f, indent=4)
 
-    with open('callback_revunet_memory_112_full.json', 'w') as f:
+    with open('callback_revunet_memory_256_full.json', 'w') as f:
         json.dump(memory_callback, f, indent=4)
 
 
