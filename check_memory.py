@@ -78,8 +78,8 @@ def main():
     memory_callback['model'] = {'max' : maxmem(), 'cur' : curmem()}
 
     fact = 0.5
-    s = (80,80,32)
-    # s = (112,112,48)
+    # s = (80,80,32)
+    s = (112,112,48)
     # s = (160,160,64)
     # s = (256,256,112)
 
@@ -124,7 +124,7 @@ def main():
     # with open('callback_memory.json', 'w') as f:
     #   json.dump(memory_callback, f, indent=4)
 
-    with open('callback_revunet_memory_80_full.json', 'w') as f:
+    with open('callback_revunet_memory_112_full.json', 'w') as f:
         json.dump(memory_callback, f, indent=4)
 
 
