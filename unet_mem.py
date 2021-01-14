@@ -98,7 +98,7 @@ def main():
     # print(convert_byte(1000*1000*1000*5*4))
     # exit(0)
     inchan = 1
-    chanscale = 16
+    chanscale = 2
     chans = [i//chanscale for i in [64, 128, 256, 512, 1024]]
     outsize = 14
     # interp = (512,512,198)
