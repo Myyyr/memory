@@ -79,9 +79,9 @@ def main():
 
     fact = 0.5
     # s = (80,80,32)
-    # s = (112,112,48)
+    s = (112,112,48)
     # s = (160,160,64)
-    s = (256,256,112)
+    # s = (256,256,112)
 
     # x = torch.from_numpy(np.random.rand(1,1,int(round(512*fact)),int(round(512*fact)),int(round(198*fact)))).float()
     x = torch.from_numpy(np.random.rand(1,1,s[0],s[1],s[2])).float()
